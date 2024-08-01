@@ -1,28 +1,52 @@
-$(document).ready(function(){
-    $('#mobile-btn').on('click', function(){
-        $('#mobile-menu').toggleClass('active');
-        $('#mobile-btn').find('i').toggleClass('fa-x');
+document.addEventListener('DOMContentLoaded', function() {
+    // Botão do menu mobile
+    document.getElementById('mobile-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+        const icon = document.querySelector('#mobile-btn i');
+        icon.classList.toggle('fa-x');
     });
 
-    $('#night-mode-toggle').on('click', function() {
-        $('body').toggleClass('night-mode');
-        var isNightMode = $('body').hasClass('night-mode');
+    const nightModeToggle = document.getElementById('night-mode-toggle');
+    const modeIcon = document.getElementById('mode-icon');
+
+    function toggleNightMode() {
+        const isNightMode = document.body.classList.toggle('night-mode');
+        // Atualizar o ícone com base no estado do modo
+        if (isNightMode) {
+            modeIcon.classList.remove('fa-moon');
+            modeIcon.classList.add('fa-sun');
+        } else {
+            modeIcon.classList.remove('fa-sun');
+            modeIcon.classList.add('fa-moon');
+        }
         localStorage.setItem('night-mode', isNightMode);
-    });
-
-    if (localStorage.getItem('night-mode') === 'true') {
-        $('body').addClass('night-mode');
     }
-});
 
-// Rolagem suave ao clicar nos links do menu
-$('#nav-list a, #mobile-nav-list a').on('click', function(event) {
-    event.preventDefault(); 
+    nightModeToggle.addEventListener('click', toggleNightMode);
 
-    var targetId = $(this).attr('href'); // Obter o ID da seção de destino
-    var targetOffset = $(targetId).offset().top; // Obter a posição vertical da seção de destino
+    // Definir o estado do modo noturno com base no armazenamento local
+    if (localStorage.getItem('night-mode') === 'true') {
+        document.body.classList.add('night-mode');
+        modeIcon.classList.remove('fa-moon');
+        modeIcon.classList.add('fa-sun');
+    } else {
+        modeIcon.classList.remove('fa-sun');
+        modeIcon.classList.add('fa-moon');
+    }
 
-    $('html, body').animate({
-        scrollTop: targetOffset
-    }, 800); // Duração da animação em milissegundos
+    // Rolagem suave ao clicar nos links do menu
+    function smoothScroll(event) {
+        event.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        const targetOffset = targetElement.offsetTop;
+
+        window.scrollTo({
+            top: targetOffset,
+            behavior: 'smooth'
+        });
+    }
+
+    const navLinks = document.querySelectorAll('#nav-list a, #mobile-nav-list a');
+    navLinks.forEach(link => link.addEventListener('click', smoothScroll));
 });
