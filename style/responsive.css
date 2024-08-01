@@ -1,0 +1,25 @@
+/* Media Queries */
+@media (max-width: 1024px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px; 
+    }
+    
+    aside.frame {
+        width: 220px; 
+    }
+    
+    #introduction {
+        font-size: 0.9rem; 
+    }
+    .projects-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column; 
+        font-size: 0.7em; 
+    }
+}

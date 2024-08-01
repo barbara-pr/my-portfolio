@@ -1,0 +1,64 @@
+/* Estilos para o modo noturno */
+body.night-mode {
+    background-image: linear-gradient(to top, rgba(34, 34, 34, 0.8), rgb(51, 51, 51));
+    color: #e0e0e0;
+}
+
+body.night-mode header > h1 {
+    color: rgb(216, 211, 211);
+}
+
+body.night-mode h2 {
+    color: rgb(155, 155, 155);
+}
+
+body.night-mode h3 {
+    color: white;
+}
+
+body.night-mode #introduction {
+    background-color: rgba(50, 50, 50, 0.8);
+    border-left: 3px solid #e0e0e0;
+    color: #e0e0e0;
+}
+
+body.night-mode .nav-item a {
+    color: #e0e0e0;
+}
+
+body.night-mode .nav-item.active a {
+    color: #f0f0f0;
+    border-bottom: 3px solid #b0bdc4;
+}
+
+body.night-mode #mobile-btn {
+    color: white;
+}
+
+body.night-mode .front-end, 
+body.night-mode .back-end, 
+body.night-mode .certificate {
+    background-color: rgb(99, 99, 99);
+}
+
+body.night-mode footer {
+    background-color: #222;
+}
+
+body.night-mode .contact-item {
+    color: #e0e0e0;
+}
+
+#night-mode-toggle {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: 10px;
+    transition: color 0.3s;
+}
+
+body.night-mode #night-mode-toggle {
+    color: #e0e0e0;
+}
